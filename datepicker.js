@@ -100,7 +100,9 @@ class DatePicker extends Component {
 
   onPressCancel() {
     this.setModalVisible(false);
-
+    if (typeof this.props.onPressCancel === 'function') {
+      this.props.onPressCancel();
+    }
     if (typeof this.props.onCloseModal === 'function') {
       this.props.onCloseModal();
     }
@@ -483,6 +485,7 @@ DatePicker.propTypes = {
   onDateChange: PropTypes.func,
   onOpenModal: PropTypes.func,
   onCloseModal: PropTypes.func,
+  onPressCancel: PropTypes.func,
   onPressMask: PropTypes.func,
   placeholder: PropTypes.string,
   modalOnResponderTerminationRequest: PropTypes.func,
